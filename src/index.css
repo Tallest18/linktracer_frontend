@@ -1,59 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
-
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-slate-950 text-slate-100;
-    min-height: 100vh;
-  }
-
-  ::-webkit-scrollbar        { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track  { background: transparent; }
-  ::-webkit-scrollbar-thumb  { @apply bg-slate-700 rounded-full; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-slate-950 text-slate-100 min-h-screen; }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-700 rounded-full; }
 }
 
 @layer components {
-  /* Rank badge for #1 — the signature element */
-  .rank-top {
-    @apply w-7 h-7 rounded-full bg-em-500 text-white flex items-center justify-center text-xs font-bold;
-    animation: pulse_ring 2.2s ease-in-out infinite;
-  }
-
-  .rank-normal {
-    @apply w-7 h-7 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-semibold;
-  }
-
-  /* Mono link pill */
-  .link-pill {
-    @apply font-mono text-xs bg-em-500/10 text-em-400 border border-em-500/20 px-2 py-1 rounded;
-    white-space: nowrap;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-  }
-
-  /* Ghost action button */
-  .btn-ghost {
-    @apply text-xs text-slate-400 border border-slate-700 rounded px-2.5 py-1.5 transition-all duration-150;
-  }
-  .btn-ghost:hover { @apply bg-slate-800 border-slate-600 text-slate-200; }
-
-  .btn-danger:hover { @apply bg-red-500/10 border-red-500/50 text-red-400; }
-}
-
-@layer utilities {
-  .scrollbar-none::-webkit-scrollbar { display: none; }
-  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .rank-top    { @apply w-7 h-7 rounded-full bg-em-500 text-white flex items-center justify-center text-xs font-bold; animation: pulse_ring 2.2s ease-in-out infinite; }
+  .rank-normal { @apply w-7 h-7 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-semibold; }
+  .btn-ghost   { @apply text-xs text-slate-400 border border-slate-700 rounded px-2.5 py-1.5 transition-all duration-150 hover:bg-slate-800 hover:border-slate-600 hover:text-slate-200; }
+  .input-base  { @apply h-10 px-4 rounded-lg bg-slate-800 border border-slate-700 text-slate-100 placeholder:text-slate-500 text-sm outline-none w-full focus:border-em-500 focus:ring-1 focus:ring-em-500/30 transition-all duration-150 disabled:opacity-50; }
+  .card        { @apply bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden; }
+  .section-title { @apply text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3; }
 }

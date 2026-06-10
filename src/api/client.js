@@ -14,15 +14,15 @@ async function req(method, path, body) {
 }
 
 export const api = {
-  getStaff:    ()     => req('GET',    '/api/staff'),
-  getStats:    ()     => req('GET',    '/api/stats'),
-  addStaff:    (name) => req('POST',   '/api/staff', { name }),
-  deleteStaff: (id)   => req('DELETE', `/api/staff/${id}`),
-  resetClicks: (id)   => req('POST',   `/api/staff/${id}/reset`),
-  getClickLog: (id)   => req('GET',    `/api/clicks/${id}`),
+  // Stats
+  getStats:        ()              => req('GET',    '/api/stats'),
+  // Staff
+  getStaff:        ()              => req('GET',    '/api/staff'),
+  addStaff:        (name)          => req('POST',   '/api/staff', { name }),
+  deleteStaff:     (id)            => req('DELETE', `/api/staff/${id}`),
+  // Campaigns
+  getCampaigns:    ()              => req('GET',    '/api/campaigns'),
+  createCampaign:  (name, url)     => req('POST',   '/api/campaigns', { name, destination_url: url }),
+  deleteCampaign:  (id)            => req('DELETE', `/api/campaigns/${id}`),
+  getCampaignStats:(id)            => req('GET',    `/api/campaigns/${id}/stats`),
 };
-
-export function trackingUrl(slug) {
-  const origin = process.env.REACT_APP_BASE_URL || window.location.origin;
-  return `${origin}/ref/${slug}`;
-}
